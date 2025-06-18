@@ -36,20 +36,20 @@ export const AnimatedChatbot = () => {
   }, []);
 
   return (
-    <section className="py-20 px-6 bg-white" id="chatbot-demo">
+    <section className="py-20 px-6 bg-black" id="chatbot-demo">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-black">
+        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
           See AI Automation in{" "}
           <span className="accent-primary">
             Action
           </span>
         </h2>
         
-        <p className="text-xl text-gray-600 mb-12">
+        <p className="text-xl text-gray-400 mb-12">
           Watch how seamlessly your customers interact with our AI
         </p>
         
-        <Card className="bg-gray-50 border-gray-200 p-8 max-w-2xl mx-auto">
+        <Card className="bg-gray-950 border-gray-800 p-8 max-w-2xl mx-auto">
           <div className="space-y-4">
             {conversation.slice(0, visibleMessages).map((message, index) => (
               <div
@@ -59,13 +59,13 @@ export const AnimatedChatbot = () => {
                 <div
                   className={`max-w-xs px-4 py-3 rounded-2xl ${
                     message.type === 'customer'
-                      ? 'bg-black text-white'
-                      : 'bg-white text-black border border-gray-200'
+                      ? 'bg-white text-black'
+                      : 'bg-gray-800 text-white border border-gray-700'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <div className={`w-2 h-2 rounded-full ${
-                      message.type === 'customer' ? 'bg-gray-300' : 'bg-gray-400'
+                      message.type === 'customer' ? 'bg-gray-400' : 'bg-gray-500'
                     }`} />
                     <span className="text-xs opacity-75">
                       {message.type === 'customer' ? 'Customer' : 'CirkadianAI'}

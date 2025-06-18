@@ -8,13 +8,13 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-20 bg-white">
       <div className="max-w-6xl mx-auto text-center">
-        <Badge variant="secondary" className="mb-6 bg-gray-100 text-gray-700 border-gray-200">
+        <Badge variant="secondary" className="mb-6 bg-gray-900 text-white border-gray-800">
           AI-Powered Business Automation
         </Badge>
         
-        <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in">
+        <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in text-black">
           Stop Losing Customers,{" "}
           <span className="accent-primary">
             Automate Your Bookings

@@ -3,9 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { HeroSection } from "@/components/HeroSection";
-import { AnimatedChatbot } from "@/components/AnimatedChatbot";
+import { AnimatedDemos } from "@/components/AnimatedDemos";
+import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FeatureHighlights } from "@/components/FeatureHighlights";
-import { IndustrySection } from "@/components/IndustrySection";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { ChatWidget } from "@/components/ChatWidget";
 import { Navigation } from "@/components/Navigation";
@@ -21,9 +21,9 @@ const Index = () => {
       <div className="relative z-10">
         <Navigation />
         <HeroSection />
-        <AnimatedChatbot />
+        <AnimatedDemos />
+        <IntegrationsSection />
         <FeatureHighlights />
-        <IndustrySection />
         <TestimonialsSection />
         <Footer />
         <ChatWidget />
