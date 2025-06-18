@@ -1,19 +1,19 @@
 
-import { WhatsApp, Telegram, Slack, Monday, Facebook, Instagram, Wordpress, Stripe, GoogleSheets, GoogleCalendar, Asana, GoogleTasks } from "lucide-react";
+import { MessageCircle, Send, Slack, Calendar, Facebook, Instagram, Globe, CreditCard, FileSpreadsheet, CalendarDays, Briefcase, CheckSquare } from "lucide-react";
 
 const integrations = [
-  { name: "WhatsApp", icon: WhatsApp },
-  { name: "Telegram", icon: Telegram },
+  { name: "WhatsApp", icon: MessageCircle },
+  { name: "Telegram", icon: Send },
   { name: "Slack", icon: Slack },
-  { name: "Monday", icon: Monday },
+  { name: "Monday", icon: Calendar },
   { name: "Facebook", icon: Facebook },
   { name: "Instagram", icon: Instagram },
-  { name: "WordPress", icon: Wordpress },
-  { name: "Stripe", icon: Stripe },
-  { name: "Google Sheets", icon: GoogleSheets },
-  { name: "Google Calendar", icon: GoogleCalendar },
-  { name: "Asana", icon: Asana },
-  { name: "Google Tasks", icon: GoogleTasks },
+  { name: "WordPress", icon: Globe },
+  { name: "Stripe", icon: CreditCard },
+  { name: "Google Sheets", icon: FileSpreadsheet },
+  { name: "Google Calendar", icon: CalendarDays },
+  { name: "Asana", icon: Briefcase },
+  { name: "Google Tasks", icon: CheckSquare },
 ];
 
 export const IntegrationsSection = () => {
