@@ -1,20 +1,18 @@
-
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-
 export const HeroSection = () => {
   const scrollToFeatures = () => {
-    document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
+    document.getElementById('features')?.scrollIntoView({
+      behavior: 'smooth'
+    });
   };
-
-  return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20 bg-black">
+  return <section className="min-h-screen flex items-center justify-center px-6 pt-20 bg-black">
       <div className="max-w-6xl mx-auto text-center">
         <Badge variant="secondary" className="mb-6 bg-gray-800 text-white border-gray-700">
           AI-Powered Business Automation
         </Badge>
         
-        <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in text-white">
+        <h1 className="text-4xl font-bold mb-8 leading-tight animate-fade-in text-white md:text-3xl">
           Stop Losing Customers,{" "}
           <span className="accent-primary">
             Automate Your Bookings
@@ -28,19 +26,10 @@ export const HeroSection = () => {
         </p>
         
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
-          <Button 
-            size="lg" 
-            className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4 hover-scale"
-            onClick={() => window.open('https://calendly.com', '_blank')}
-          >
+          <Button size="lg" className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4 hover-scale" onClick={() => window.open('https://calendly.com', '_blank')}>
             📅 Book Your Free Demo
           </Button>
-          <Button 
-            size="lg" 
-            variant="outline" 
-            className="border-gray-600 text-white hover:bg-gray-800 text-lg px-8 py-4 hover-scale"
-            onClick={scrollToFeatures}
-          >
+          <Button size="lg" variant="outline" className="border-gray-600 text-white hover:bg-gray-800 text-lg px-8 py-4 hover-scale" onClick={scrollToFeatures}>
             Learn More
           </Button>
         </div>
@@ -49,6 +38,5 @@ export const HeroSection = () => {
           <p>Trusted by clinics, real estate agencies, car dealerships, restaurants, and healthcare professionals</p>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
