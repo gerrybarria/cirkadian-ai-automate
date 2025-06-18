@@ -35,16 +35,16 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   return (
-    <section className="py-20 px-6" id="testimonials">
+    <section className="py-20 px-6 bg-gray-50" id="testimonials">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-black">
             What Our Clients{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+            <span className="accent-primary">
               Are Saying
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Real results from real businesses across different industries
           </p>
         </div>
@@ -53,7 +53,7 @@ export const TestimonialsSection = () => {
           {testimonials.map((testimonial, index) => (
             <Card 
               key={index} 
-              className="bg-gray-900/50 border-gray-700 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-300 group hover-scale"
+              className="bg-white border-gray-200 hover:border-gray-300 transition-all duration-300 group hover-scale"
             >
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
@@ -61,12 +61,12 @@ export const TestimonialsSection = () => {
                     <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
                   ))}
                 </div>
-                <p className="text-gray-300 mb-6 italic">"{testimonial.content}"</p>
+                <p className="text-gray-600 mb-6 italic">"{testimonial.content}"</p>
                 <div className="flex items-center gap-3">
                   <div className="text-2xl">{testimonial.image}</div>
                   <div>
-                    <p className="font-semibold text-white">{testimonial.name}</p>
-                    <p className="text-sm text-gray-400">{testimonial.company}</p>
+                    <p className="font-semibold text-black">{testimonial.name}</p>
+                    <p className="text-sm text-gray-500">{testimonial.company}</p>
                   </div>
                 </div>
               </CardContent>

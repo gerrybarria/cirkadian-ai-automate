@@ -1,61 +1,63 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { Stethoscope, Home, Car, Calendar, Utensils } from "lucide-react";
 
 const industries = [
   {
     title: "Clinics",
     description: "Instantly schedule patient appointments, send reminders, and manage follow-ups",
     benefits: ["Automated patient intake", "Appointment reminders", "Follow-up scheduling"],
-    color: "blue"
+    icon: Stethoscope,
+    image: "🏥",
+    bgPattern: "bg-gradient-to-br from-gray-50 to-white"
   },
   {
     title: "Real Estate",
     description: "Automatically qualify leads, book viewings, and enhance your customer journey",
     benefits: ["Lead qualification", "Property viewings", "Client communication"],
-    color: "green"
+    icon: Home,
+    image: "🏠",
+    bgPattern: "bg-gradient-to-br from-white to-gray-50"
   },
   {
     title: "Car Dealerships",
     description: "Accelerate test drives, service appointments, and inquiries through automation",
     benefits: ["Test drive booking", "Service scheduling", "Lead management"],
-    color: "purple"
+    icon: Car,
+    image: "🚗",
+    bgPattern: "bg-gradient-to-br from-gray-50 to-white"
   },
   {
     title: "Healthcare Professionals",
     description: "Streamline patient intake, automate reminders, and enhance patient experience",
     benefits: ["Patient scheduling", "Intake automation", "Treatment reminders"],
-    color: "blue"
+    icon: Calendar,
+    image: "⚕️",
+    bgPattern: "bg-gradient-to-br from-white to-gray-50"
   },
   {
     title: "Restaurants & Bars",
     description: "Effortlessly manage reservations, table assignments, and customer interactions",
     benefits: ["Reservation management", "Table optimization", "Customer service"],
-    color: "green"
+    icon: Utensils,
+    image: "🍽️",
+    bgPattern: "bg-gradient-to-br from-gray-50 to-white"
   }
 ];
 
-const getColorClasses = (color: string) => {
-  const colors = {
-    blue: "from-blue-600 to-blue-400",
-    green: "from-green-600 to-green-400",
-    purple: "from-purple-600 to-purple-400"
-  };
-  return colors[color as keyof typeof colors] || colors.blue;
-};
-
 export const IndustrySection = () => {
   return (
-    <section className="py-20 px-6" id="industries">
+    <section className="py-20 px-6 bg-white" id="industries">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-black">
             Specialized Solutions for{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+            <span className="accent-primary">
               Every Industry
             </span>
           </h2>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Tailored automation that understands your specific business needs
           </p>
         </div>
@@ -64,24 +66,28 @@ export const IndustrySection = () => {
           {industries.map((industry, index) => (
             <Card 
               key={index} 
-              className="bg-gray-900/50 border-gray-700 backdrop-blur-sm hover:bg-gray-800/50 transition-all duration-300 group hover-scale"
+              className="border-gray-200 hover:border-gray-300 transition-all duration-300 group hover-scale overflow-hidden"
             >
-              <CardContent className="p-6">
-                <div className={`inline-block px-3 py-1 rounded-full bg-gradient-to-r ${getColorClasses(industry.color)} text-white text-sm font-medium mb-4`}>
-                  {industry.title}
+              <div className={`${industry.bgPattern} p-6 text-center border-b border-gray-100`}>
+                <div className="text-6xl mb-4 animate-pulse-subtle">{industry.image}</div>
+                <div className="w-12 h-12 rounded-lg bg-black flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <industry.icon className="h-6 w-6 text-white" />
                 </div>
-                <p className="text-gray-300 mb-6">{industry.description}</p>
+              </div>
+              <CardContent className="p-6 bg-white">
+                <h3 className="text-xl font-semibold mb-3 text-black">{industry.title}</h3>
+                <p className="text-gray-600 mb-6">{industry.description}</p>
                 <ul className="space-y-2 mb-6">
                   {industry.benefits.map((benefit, idx) => (
-                    <li key={idx} className="flex items-center text-sm text-gray-400">
-                      <div className={`w-2 h-2 rounded-full bg-gradient-to-r ${getColorClasses(industry.color)} mr-3`} />
+                    <li key={idx} className="flex items-center text-sm text-gray-600">
+                      <div className="w-2 h-2 rounded-full bg-black mr-3" />
                       {benefit}
                     </li>
                   ))}
                 </ul>
                 <Button 
                   variant="outline" 
-                  className="w-full border-gray-600 text-white hover:bg-gray-800"
+                  className="w-full border-gray-300 text-black hover:bg-gray-50"
                   onClick={() => window.open('https://calendly.com', '_blank')}
                 >
                   Learn More
@@ -92,9 +98,9 @@ export const IndustrySection = () => {
         </div>
         
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-blue-600/20 to-green-600/20 rounded-2xl p-8 border border-blue-600/30">
-            <h3 className="text-2xl font-bold text-white mb-4">Exceptional Post-Sale Support</h3>
-            <p className="text-gray-300 text-lg max-w-3xl mx-auto">
+          <div className="bg-gray-50 rounded-2xl p-8 border border-gray-200">
+            <h3 className="text-2xl font-bold text-black mb-4">Exceptional Post-Sale Support</h3>
+            <p className="text-gray-600 text-lg max-w-3xl mx-auto">
               Our dedicated post-sales team ensures you have continuous support, prompt changes, 
               and proactive improvements—keeping your business running flawlessly.
             </p>

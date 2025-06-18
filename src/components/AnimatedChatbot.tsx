@@ -36,20 +36,20 @@ export const AnimatedChatbot = () => {
   }, []);
 
   return (
-    <section className="py-20 px-6" id="chatbot-demo">
+    <section className="py-20 px-6 bg-white" id="chatbot-demo">
       <div className="max-w-4xl mx-auto text-center">
-        <h2 className="text-3xl md:text-5xl font-bold mb-8">
+        <h2 className="text-3xl md:text-5xl font-bold mb-8 text-black">
           See AI Automation in{" "}
-          <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+          <span className="accent-primary">
             Action
           </span>
         </h2>
         
-        <p className="text-xl text-gray-300 mb-12">
+        <p className="text-xl text-gray-600 mb-12">
           Watch how seamlessly your customers interact with our AI
         </p>
         
-        <Card className="bg-gray-900/50 border-gray-700 backdrop-blur-sm p-8 max-w-2xl mx-auto">
+        <Card className="bg-gray-50 border-gray-200 p-8 max-w-2xl mx-auto">
           <div className="space-y-4">
             {conversation.slice(0, visibleMessages).map((message, index) => (
               <div
@@ -59,13 +59,13 @@ export const AnimatedChatbot = () => {
                 <div
                   className={`max-w-xs px-4 py-3 rounded-2xl ${
                     message.type === 'customer'
-                      ? 'bg-blue-600 text-white'
-                      : 'bg-green-600 text-white'
+                      ? 'bg-black text-white'
+                      : 'bg-white text-black border border-gray-200'
                   }`}
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <div className={`w-2 h-2 rounded-full ${
-                      message.type === 'customer' ? 'bg-blue-200' : 'bg-green-200'
+                      message.type === 'customer' ? 'bg-gray-300' : 'bg-gray-400'
                     }`} />
                     <span className="text-xs opacity-75">
                       {message.type === 'customer' ? 'Customer' : 'CirkadianAI'}
