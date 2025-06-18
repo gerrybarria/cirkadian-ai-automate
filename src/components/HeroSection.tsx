@@ -8,13 +8,13 @@ export const HeroSection = () => {
   };
 
   return (
-    <section className="min-h-screen flex items-center justify-center px-6 pt-20 bg-white">
+    <section className="min-h-screen flex items-center justify-center px-6 pt-20 bg-black">
       <div className="max-w-6xl mx-auto text-center">
-        <Badge variant="secondary" className="mb-6 bg-gray-900 text-white border-gray-800">
+        <Badge variant="secondary" className="mb-6 bg-gray-800 text-white border-gray-700">
           AI-Powered Business Automation
         </Badge>
         
-        <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in text-black">
+        <h1 className="text-4xl md:text-7xl font-bold mb-8 leading-tight animate-fade-in text-white">
           Stop Losing Customers,{" "}
           <span className="accent-primary">
             Automate Your Bookings
@@ -22,7 +22,7 @@ export const HeroSection = () => {
           and Support with AI
         </h1>
         
-        <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in">
+        <p className="text-xl md:text-2xl text-gray-400 mb-8 max-w-4xl mx-auto leading-relaxed animate-fade-in">
           78% of Americans won't wait longer than 5 minutes before searching for alternatives. 
           Keep your customers engaged—automatically.
         </p>
@@ -30,7 +30,7 @@ export const HeroSection = () => {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-fade-in">
           <Button 
             size="lg" 
-            className="bg-black text-white hover:bg-gray-800 text-lg px-8 py-4 hover-scale"
+            className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4 hover-scale"
             onClick={() => window.open('https://calendly.com', '_blank')}
           >
             📅 Book Your Free Demo
@@ -38,7 +38,7 @@ export const HeroSection = () => {
           <Button 
             size="lg" 
             variant="outline" 
-            className="border-gray-300 text-black hover:bg-gray-50 text-lg px-8 py-4 hover-scale"
+            className="border-gray-600 text-white hover:bg-gray-800 text-lg px-8 py-4 hover-scale"
             onClick={scrollToFeatures}
           >
             Learn More

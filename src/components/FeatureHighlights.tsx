@@ -31,34 +31,34 @@ const features = [
 
 export const FeatureHighlights = () => {
   return (
-    <section className="py-20 px-6 bg-gray-50" id="features">
+    <section className="py-20 px-6 bg-black" id="features">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-black">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
             Powerful Features That{" "}
             <span className="accent-primary">
               Drive Results
             </span>
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
             Our AI-powered automation platform transforms how you handle customer interactions
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
             <Card 
               key={index} 
-              className="bg-white border-gray-200 hover:border-gray-300 transition-all duration-300 group hover-scale"
+              className="bg-gray-900 border-gray-800 hover:border-gray-600 transition-all duration-300 group hover-scale"
             >
               <CardContent className="p-6">
-                <div className="w-12 h-12 rounded-lg bg-black flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <feature.icon className="h-6 w-6 text-white" />
+                <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                  <feature.icon className="h-6 w-6 text-black" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-black">{feature.title}</h3>
-                <p className="text-gray-600 mb-4">{feature.description}</p>
-                <div className="bg-gray-100 rounded-lg p-3 border border-gray-200">
-                  <p className="text-sm text-gray-700 font-medium">{feature.stat}</p>
+                <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
+                <p className="text-gray-400 mb-4 leading-relaxed">{feature.description}</p>
+                <div className="bg-gray-800 rounded-lg p-3 border border-gray-700">
+                  <p className="text-sm text-gray-300 font-medium leading-relaxed">{feature.stat}</p>
                 </div>
               </CardContent>
             </Card>

@@ -35,18 +35,20 @@ export const IntegrationsSection = () => {
             {integrations.map((integration, index) => (
               <div
                 key={`first-${index}`}
-                className="flex-shrink-0 w-16 h-16 bg-white rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+                className="flex-shrink-0 flex flex-col items-center space-y-2 hover:scale-110 transition-transform"
               >
-                <integration.icon className="w-8 h-8 text-black" />
+                <integration.icon className="w-12 h-12 text-white" />
+                <span className="text-xs text-gray-400 font-medium">{integration.name}</span>
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
             {integrations.map((integration, index) => (
               <div
                 key={`second-${index}`}
-                className="flex-shrink-0 w-16 h-16 bg-white rounded-lg flex items-center justify-center hover:bg-gray-100 transition-colors"
+                className="flex-shrink-0 flex flex-col items-center space-y-2 hover:scale-110 transition-transform"
               >
-                <integration.icon className="w-8 h-8 text-black" />
+                <integration.icon className="w-12 h-12 text-white" />
+                <span className="text-xs text-gray-400 font-medium">{integration.name}</span>
               </div>
             ))}
           </div>
