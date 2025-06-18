@@ -129,8 +129,8 @@ export const AnimatedDemos = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {demos.map((demo, idx) => <Card key={demo} className="bg-gray-900 border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 py-[100px]">
-              <div className="space-y-4 h-200 overflow-hidden">
+          {demos.map((demo, idx) => <Card key={demo} className="bg-gray-900 border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 py-[80px] my-0 mx-[3px]">
+              <div className="space-y-4 h-100 overflow-hidden">
                 {conversations[demo as keyof typeof conversations].slice(0, visibleMessages[demo]).map((message, index) => renderMessage(message, index))}
               </div>
             </Card>)}
