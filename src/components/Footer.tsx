@@ -1,9 +1,6 @@
-
 import { Button } from "@/components/ui/button";
-
 export const Footer = () => {
-  return (
-    <footer className="bg-gray-900/50 border-t border-gray-800 py-16 px-6">
+  return <footer className="bg-gray-900/50 border-t border-gray-800 py-16 px-6">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
@@ -15,11 +12,7 @@ export const Footer = () => {
           <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
             Join hundreds of businesses already automating their customer interactions with CirkadianAI
           </p>
-          <Button 
-            size="lg"
-            className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-lg px-8 py-4 hover-scale"
-            onClick={() => window.open('https://calendly.com', '_blank')}
-          >
+          <Button size="lg" className="bg-gradient-to-r from-blue-600 to-green-600 hover:from-blue-700 hover:to-green-700 text-lg px-8 py-4 hover-scale" onClick={() => window.open('https://calendly.com', '_blank')}>
             📅 Book Your Free Demo Now
           </Button>
         </div>
@@ -66,9 +59,8 @@ export const Footer = () => {
         </div>
         
         <div className="pt-8 mt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; 2024 CirkadianAI. All rights reserved. Built with 🤖 and ❤️</p>
+          <p>© 2024 CirkadianAI. All rights reserved. Built with ❤️</p>
         </div>
       </div>
-    </footer>
-  );
+    </footer>;
 };

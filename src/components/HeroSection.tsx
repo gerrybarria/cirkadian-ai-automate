@@ -29,9 +29,7 @@ export const HeroSection = () => {
           <Button size="lg" className="bg-white text-black hover:bg-gray-200 text-lg px-8 py-4 hover-scale" onClick={() => window.open('https://calendly.com', '_blank')}>
             📅 Book Your Free Demo
           </Button>
-          <Button size="lg" variant="outline" className="border-gray-600 text-white hover:bg-gray-800 text-lg px-8 py-4 hover-scale" onClick={scrollToFeatures}>
-            Learn More
-          </Button>
+          
         </div>
         
         <div className="mt-16 text-sm text-gray-500">
