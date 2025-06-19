@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Calendar, Car, Users, FileText, Clock } from "lucide-react";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const conversations = {
   scheduling: [{
@@ -10,16 +11,28 @@ const conversations = {
     delay: 500
   }, {
     type: 'ai',
-    text: "Perfect! I have availability this week. Which day works better for you?",
+    text: "I'd be happy to help! What type of consultation are you looking for?",
     delay: 800
   }, {
-    type: 'calendar',
-    text: "📅 Creating appointment...",
+    type: 'customer',
+    text: "A business strategy session",
     delay: 1200
   }, {
     type: 'ai',
-    text: "✅ Appointment confirmed for Thursday 2PM. Reminder sent!",
-    delay: 1500
+    text: "Perfect! I have availability this Thursday at 2PM or Friday at 10AM. Which works better?",
+    delay: 1600
+  }, {
+    type: 'customer',
+    text: "Thursday 2PM sounds great",
+    delay: 2000
+  }, {
+    type: 'calendar',
+    text: "📅 Creating appointment...",
+    delay: 2400
+  }, {
+    type: 'ai',
+    text: "✅ Appointment confirmed for Thursday 2PM. Calendar invite sent!",
+    delay: 2800
   }],
   carSales: [{
     type: 'customer',
@@ -58,21 +71,15 @@ const conversations = {
     color: 'orange'
   }],
   realEstate: [{
-    type: 'property',
-    text: "🏠 Property Listing Form",
-    delay: 500
+    type: 'new-listing',
+    text: "New listing added",
+    delay: 1000,
+    row: 1
   }, {
-    type: 'data',
-    text: "📍 Address: 123 Oak Street\n💰 Price: $485,000",
-    delay: 800
-  }, {
-    type: 'details',
-    text: "🛏️ 3 Bedrooms, 2 Bathrooms\n📐 2,100 sq ft\n🚗 2-car garage",
-    delay: 1200
-  }, {
-    type: 'status',
-    text: "✅ Listing created and published\n📊 MLS# 789456123",
-    delay: 1500
+    type: 'status-update',
+    text: "Status: Active",
+    delay: 2000,
+    row: 2
   }]
 };
 
@@ -81,6 +88,15 @@ const dentistDates = [
   { text: "December 15, 2024", col: 0 },
   { text: "December 16, 2024", col: 1 },
   { text: "December 17, 2024", col: 2 }
+];
+
+// Fixed real estate spreadsheet data
+const realEstateData = [
+  { id: "001", address: "123 Oak Street", price: "$485,000", bedrooms: "3", bathrooms: "2", sqft: "2,100", status: "Pending", agent: "Sarah Johnson" },
+  { id: "002", address: "456 Pine Avenue", price: "$625,000", bedrooms: "4", bathrooms: "3", sqft: "2,800", status: "New", agent: "Mike Chen" },
+  { id: "003", address: "789 Maple Drive", price: "$750,000", bedrooms: "5", bathrooms: "4", sqft: "3,200", status: "Active", agent: "Lisa Rodriguez" },
+  { id: "004", address: "321 Cedar Lane", price: "$550,000", bedrooms: "3", bathrooms: "3", sqft: "2,400", status: "Sold", agent: "Tom Wilson" },
+  { id: "005", address: "654 Birch Court", price: "$695,000", bedrooms: "4", bathrooms: "3", sqft: "2,900", status: "Active", agent: "Emma Davis" }
 ];
 
 const industryTypes = ["Businesses", "Health Clinics", "Restaurants", "Car Dealerships", "Real Estate Agents", "Lawyers", "Professionals"];
@@ -125,7 +141,7 @@ export const AnimatedDemos = () => {
             [demo]: 0
           }));
           showNextMessage(demo, 0, baseDelay);
-        }, 2000 + baseDelay);
+        }, 3000 + baseDelay);
         timeoutIds.push(timeoutId);
       }
     };
@@ -174,8 +190,8 @@ export const AnimatedDemos = () => {
     }
 
     return (
-      <div key={index} className={`flex ${message.type === 'customer' ? 'justify-end' : 'justify-start'} animate-fade-in`}>
-        <div className={`max-w-xs px-4 py-3 rounded-2xl ${bgColor}`}>
+      <div key={index} className={`flex ${message.type === 'customer' ? 'justify-end' : 'justify-start'} animate-fade-in mb-3`}>
+        <div className={`max-w-[85%] px-3 py-2 rounded-2xl ${bgColor}`}>
           <div className="flex items-center gap-2 mb-1">
             {icon}
             <div className="w-2 h-2 rounded-full bg-gray-400" />
@@ -186,7 +202,7 @@ export const AnimatedDemos = () => {
                'System'}
             </span>
           </div>
-          <p className="text-sm whitespace-pre-line">{message.text}</p>
+          <p className="text-sm whitespace-pre-line leading-relaxed">{message.text}</p>
         </div>
       </div>
     );
@@ -258,6 +274,65 @@ export const AnimatedDemos = () => {
     );
   };
 
+  const renderSpreadsheet = () => {
+    const animatedRows = conversations.realEstate.slice(0, visibleMessages.realEstate);
+    
+    return (
+      <div className="h-full overflow-hidden">
+        <div className="mb-4">
+          <h3 className="text-lg font-semibold text-white mb-2">Property Listings</h3>
+        </div>
+        <div className="bg-gray-800 rounded-lg border border-gray-700 overflow-hidden">
+          <Table>
+            <TableHeader>
+              <TableRow className="border-gray-700">
+                <TableHead className="text-gray-300 text-xs px-2 py-2">ID</TableHead>
+                <TableHead className="text-gray-300 text-xs px-2 py-2">Address</TableHead>
+                <TableHead className="text-gray-300 text-xs px-2 py-2">Price</TableHead>
+                <TableHead className="text-gray-300 text-xs px-2 py-2">Bed/Bath</TableHead>
+                <TableHead className="text-gray-300 text-xs px-2 py-2">Status</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {realEstateData.map((property, index) => {
+                const isAnimated = animatedRows.some(anim => anim.row === index + 1);
+                const animationType = animatedRows.find(anim => anim.row === index + 1)?.type;
+                
+                let rowBgColor = "bg-gray-900";
+                if (isAnimated) {
+                  if (animationType === 'new-listing') {
+                    rowBgColor = "bg-green-900/30 animate-fade-in";
+                  } else if (animationType === 'status-update') {
+                    rowBgColor = "bg-blue-900/30 animate-fade-in";
+                  }
+                }
+                
+                return (
+                  <TableRow key={property.id} className={`border-gray-700 ${rowBgColor}`}>
+                    <TableCell className="text-gray-300 text-xs px-2 py-2">{property.id}</TableCell>
+                    <TableCell className="text-gray-300 text-xs px-2 py-2">{property.address}</TableCell>
+                    <TableCell className="text-gray-300 text-xs px-2 py-2">{property.price}</TableCell>
+                    <TableCell className="text-gray-300 text-xs px-2 py-2">{property.bedrooms}/{property.bathrooms}</TableCell>
+                    <TableCell className="text-gray-300 text-xs px-2 py-2">
+                      <span className={`px-2 py-1 rounded text-xs ${
+                        property.status === 'Active' ? 'bg-green-700 text-green-200' :
+                        property.status === 'Pending' ? 'bg-yellow-700 text-yellow-200' :
+                        property.status === 'Sold' ? 'bg-red-700 text-red-200' :
+                        'bg-blue-700 text-blue-200'
+                      }`}>
+                        {property.status}
+                      </span>
+                    </TableCell>
+                  </TableRow>
+                );
+              })}
+            </TableBody>
+          </Table>
+        </div>
+      </div>
+    );
+  };
+
   const demos = ['scheduling', 'carSales', 'dentist', 'realEstate'];
 
   return (
@@ -278,14 +353,18 @@ export const AnimatedDemos = () => {
         
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {demos.map((demo, idx) => (
-            <Card key={demo} className="bg-gray-900 border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 h-96">
+            <Card key={demo} className="bg-gray-900 border-gray-800 p-6 hover:border-gray-600 transition-all duration-300 h-96">
               <div className="space-y-4 h-full overflow-hidden">
                 {demo === 'dentist' ? (
                   renderCalendarGrid()
+                ) : demo === 'realEstate' ? (
+                  renderSpreadsheet()
                 ) : (
-                  conversations[demo as keyof typeof conversations]
-                    .slice(0, visibleMessages[demo])
-                    .map((message, index) => renderMessage(message, index))
+                  <div className="h-full overflow-y-auto">
+                    {conversations[demo as keyof typeof conversations]
+                      .slice(0, visibleMessages[demo])
+                      .map((message, index) => renderMessage(message, index))}
+                  </div>
                 )}
               </div>
             </Card>
