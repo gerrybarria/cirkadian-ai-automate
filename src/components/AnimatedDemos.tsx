@@ -7,84 +7,84 @@ const conversations = {
   scheduling: [{
     type: 'customer',
     text: "I need to schedule a consultation",
-    delay: 1000
+    delay: 500
   }, {
     type: 'ai',
     text: "Perfect! I have availability this week. Which day works better for you?",
-    delay: 1500
+    delay: 800
   }, {
     type: 'calendar',
     text: "📅 Creating appointment...",
-    delay: 2000
+    delay: 1200
   }, {
     type: 'ai',
     text: "✅ Appointment confirmed for Thursday 2PM. Reminder sent!",
-    delay: 2500
+    delay: 1500
   }],
   carSales: [{
     type: 'customer',
     text: "Looking for a reliable SUV",
-    delay: 1000
+    delay: 500
   }, {
     type: 'ai',
     text: "Perfect timing! Check out this 2024 Honda CR-V 🚗",
-    delay: 1500
+    delay: 800
   }, {
     type: 'car',
     text: "🚙 2024 Honda CR-V\n💰 $28,900\n⭐ 5-star safety rating",
-    delay: 2000
+    delay: 1200
   }, {
     type: 'ai',
     text: "Want to schedule a test drive? 🗓️",
-    delay: 2500
+    delay: 1500
   }],
   dentist: [{
     type: 'date',
     text: "December 15, 2024",
-    delay: 1000,
+    delay: 500,
     position: { row: 0, col: 0 }
   }, {
     type: 'appointment',
     text: "Dr. Smith - Dental Cleaning\n2:00 PM - 3:00 PM",
-    delay: 1500,
+    delay: 800,
     position: { row: 1, col: 0 }
   }, {
     type: 'date',
     text: "December 16, 2024",
-    delay: 2000,
+    delay: 1200,
     position: { row: 0, col: 1 }
   }, {
     type: 'appointment',
     text: "Dr. Johnson - Teeth Whitening\n10:00 AM - 11:00 AM",
-    delay: 2500,
+    delay: 1500,
     position: { row: 1, col: 1 }
   }, {
     type: 'date',
     text: "December 17, 2024",
-    delay: 3000,
+    delay: 1800,
     position: { row: 0, col: 2 }
   }, {
     type: 'appointment',
     text: "Dr. Smith - Root Canal\n3:00 PM - 4:30 PM",
-    delay: 3500,
+    delay: 2100,
     position: { row: 1, col: 2 }
   }],
   realEstate: [{
     type: 'property',
     text: "🏠 Property Listing Form",
-    delay: 1000
+    delay: 500
   }, {
     type: 'data',
     text: "📍 Address: 123 Oak Street\n💰 Price: $485,000",
-    delay: 1500
+    delay: 800
   }, {
     type: 'details',
     text: "🛏️ 3 Bedrooms, 2 Bathrooms\n📐 2,100 sq ft\n🚗 2-car garage",
-    delay: 2000
+    delay: 1200
   }, {
     type: 'status',
     text: "✅ Listing created and published\n📊 MLS# 789456123",
-    delay: 2500
+    delay: 1500
   }]
 };
 
@@ -130,16 +130,16 @@ export const AnimatedDemos = () => {
             [demo]: 0
           }));
           showNextMessage(demo, 0, baseDelay);
-        }, 3000 + baseDelay);
+        }, 2000 + baseDelay);
         timeoutIds.push(timeoutId);
       }
     };
 
     // Start all demos with staggered delays
     showNextMessage('scheduling', 0, 0);
-    showNextMessage('carSales', 0, 2000);
-    showNextMessage('dentist', 0, 4000);
-    showNextMessage('realEstate', 0, 6000);
+    showNextMessage('carSales', 0, 1000);
+    showNextMessage('dentist', 0, 2000);
+    showNextMessage('realEstate', 0, 3000);
 
     return () => timeoutIds.forEach(id => clearTimeout(id));
   }, []);
@@ -209,7 +209,7 @@ export const AnimatedDemos = () => {
                 msg.position && msg.position.col === col && msg.position.row === row
               );
               
-              if (!message) return <div key={row} className="h-20" />;
+              if (!message) return <div key={row} className="h-24" />;
               
               let bgColor = "bg-gray-800 text-white border border-gray-700";
               let icon = null;
@@ -224,15 +224,17 @@ export const AnimatedDemos = () => {
               
               return (
                 <div key={row} className="animate-fade-in">
-                  <div className={`px-4 py-3 rounded-2xl ${bgColor} h-20 flex flex-col justify-center`}>
-                    <div className="flex items-center gap-2 mb-1">
+                  <div className={`px-3 py-3 rounded-2xl ${bgColor} h-24 flex flex-col`}>
+                    <div className="flex items-center gap-2 mb-2">
                       {icon}
                       <div className="w-2 h-2 rounded-full bg-gray-400" />
                       <span className="text-xs opacity-75">
                         {message.type === 'date' ? 'Calendar' : 'Appointment'}
                       </span>
                     </div>
-                    <p className="text-sm whitespace-pre-line">{message.text}</p>
+                    <div className="flex-1 flex items-center">
+                      <p className="text-sm whitespace-pre-line leading-tight">{message.text}</p>
+                    </div>
                   </div>
                 </div>
               );
