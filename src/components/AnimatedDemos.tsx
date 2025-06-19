@@ -39,35 +39,23 @@ const conversations = {
     delay: 1500
   }],
   dentist: [{
-    type: 'date',
-    text: "December 15, 2024",
-    delay: 500,
-    position: { row: 0, col: 0 }
-  }, {
     type: 'appointment',
     text: "Dr. Smith - Dental Cleaning\n2:00 PM - 3:00 PM",
     delay: 800,
-    position: { row: 1, col: 0 }
-  }, {
-    type: 'date',
-    text: "December 16, 2024",
-    delay: 1200,
-    position: { row: 0, col: 1 }
+    position: { row: 1, col: 0 },
+    color: 'green'
   }, {
     type: 'appointment',
     text: "Dr. Johnson - Teeth Whitening\n10:00 AM - 11:00 AM",
     delay: 1500,
-    position: { row: 1, col: 1 }
-  }, {
-    type: 'date',
-    text: "December 17, 2024",
-    delay: 1800,
-    position: { row: 0, col: 2 }
+    position: { row: 1, col: 1 },
+    color: 'purple'
   }, {
     type: 'appointment',
     text: "Dr. Smith - Root Canal\n3:00 PM - 4:30 PM",
     delay: 2100,
-    position: { row: 1, col: 2 }
+    position: { row: 1, col: 2 },
+    color: 'orange'
   }],
   realEstate: [{
     type: 'property',
@@ -87,6 +75,13 @@ const conversations = {
     delay: 1500
   }]
 };
+
+// Fixed dates for the dentist calendar
+const dentistDates = [
+  { text: "December 15, 2024", col: 0 },
+  { text: "December 16, 2024", col: 1 },
+  { text: "December 17, 2024", col: 2 }
+];
 
 const industryTypes = ["Businesses", "Health Clinics", "Restaurants", "Car Dealerships", "Real Estate Agents", "Lawyers", "Professionals"];
 
@@ -205,39 +200,57 @@ export const AnimatedDemos = () => {
         {[0, 1, 2].map(col => (
           <div key={col} className="space-y-4">
             {[0, 1].map(row => {
-              const message = dentistMessages.find(msg => 
-                msg.position && msg.position.col === col && msg.position.row === row
-              );
-              
-              if (!message) return <div key={row} className="h-24" />;
-              
-              let bgColor = "bg-gray-800 text-white border border-gray-700";
-              let icon = null;
-              
-              if (message.type === 'date') {
-                bgColor = "bg-blue-900 text-blue-200 border border-blue-700";
-                icon = <Calendar className="w-3 h-3" />;
-              } else if (message.type === 'appointment') {
-                bgColor = "bg-green-900 text-green-200 border border-green-700";
-                icon = <Clock className="w-3 h-3" />;
-              }
-              
-              return (
-                <div key={row} className="animate-fade-in">
-                  <div className={`px-3 py-3 rounded-2xl ${bgColor} h-24 flex flex-col`}>
-                    <div className="flex items-center gap-2 mb-2">
-                      {icon}
-                      <div className="w-2 h-2 rounded-full bg-gray-400" />
-                      <span className="text-xs opacity-75">
-                        {message.type === 'date' ? 'Calendar' : 'Appointment'}
-                      </span>
-                    </div>
-                    <div className="flex-1 flex items-center">
-                      <p className="text-sm whitespace-pre-line leading-tight">{message.text}</p>
+              if (row === 0) {
+                // Always show dates (fixed)
+                const dateInfo = dentistDates[col];
+                return (
+                  <div key={row}>
+                    <div className="px-3 py-3 rounded-2xl bg-blue-900 text-blue-200 border border-blue-700 h-20 flex flex-col">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Calendar className="w-3 h-3" />
+                        <div className="w-2 h-2 rounded-full bg-gray-400" />
+                        <span className="text-xs opacity-75">Calendar</span>
+                      </div>
+                      <div className="flex-1 flex items-center">
+                        <p className="text-sm whitespace-pre-line leading-tight">{dateInfo.text}</p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              );
+                );
+              } else {
+                // Animate appointments
+                const appointment = dentistMessages.find(msg => 
+                  msg.position && msg.position.col === col && msg.position.row === row
+                );
+                
+                if (!appointment) return <div key={row} className="h-32" />;
+                
+                let bgColor = "bg-gray-800 text-white border border-gray-700";
+                
+                // Apply different colors based on appointment color
+                if (appointment.color === 'green') {
+                  bgColor = "bg-green-900 text-green-200 border border-green-700";
+                } else if (appointment.color === 'purple') {
+                  bgColor = "bg-purple-900 text-purple-200 border border-purple-700";
+                } else if (appointment.color === 'orange') {
+                  bgColor = "bg-orange-900 text-orange-200 border border-orange-700";
+                }
+                
+                return (
+                  <div key={row} className="animate-fade-in">
+                    <div className={`px-3 py-4 rounded-2xl ${bgColor} h-32 flex flex-col`}>
+                      <div className="flex items-center gap-2 mb-2">
+                        <Clock className="w-3 h-3" />
+                        <div className="w-2 h-2 rounded-full bg-gray-400" />
+                        <span className="text-xs opacity-75">Appointment</span>
+                      </div>
+                      <div className="flex-1 flex items-center">
+                        <p className="text-sm whitespace-pre-line leading-tight">{appointment.text}</p>
+                      </div>
+                    </div>
+                  </div>
+                );
+              }
             })}
           </div>
         ))}
