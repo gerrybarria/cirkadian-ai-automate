@@ -1,6 +1,8 @@
+
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
-import { Calendar, Car, Users } from "lucide-react";
+import { Calendar, Car, Users, FileText, Clock } from "lucide-react";
+
 const conversations = {
   scheduling: [{
     type: 'customer',
@@ -35,25 +37,67 @@ const conversations = {
     type: 'ai',
     text: "Want to schedule a test drive? 🗓️",
     delay: 2500
+  }],
+  dentist: [{
+    type: 'calendar',
+    text: "📅 December 15, 2024",
+    delay: 1000
+  }, {
+    type: 'appointment',
+    text: "🦷 Dr. Smith - Dental Cleaning\n⏰ 2:00 PM - 3:00 PM",
+    delay: 1500
+  }, {
+    type: 'patient',
+    text: "👤 Patient: Sarah Johnson\n📝 Regular checkup + teeth whitening consultation",
+    delay: 2000
+  }, {
+    type: 'system',
+    text: "✅ Appointment scheduled\n📱 Reminder sent to patient",
+    delay: 2500
+  }],
+  realEstate: [{
+    type: 'property',
+    text: "🏠 Property Listing Form",
+    delay: 1000
+  }, {
+    type: 'data',
+    text: "📍 Address: 123 Oak Street\n💰 Price: $485,000",
+    delay: 1500
+  }, {
+    type: 'details',
+    text: "🛏️ 3 Bedrooms, 2 Bathrooms\n📐 2,100 sq ft\n🚗 2-car garage",
+    delay: 2000
+  }, {
+    type: 'status',
+    text: "✅ Listing created and published\n📊 MLS# 789456123",
+    delay: 2500
   }]
 };
+
 const industryTypes = ["Businesses", "Health Clinics", "Restaurants", "Car Dealerships", "Real Estate Agents", "Lawyers", "Professionals"];
+
 export const AnimatedDemos = () => {
   const [currentIndustry, setCurrentIndustry] = useState(0);
   const [visibleMessages, setVisibleMessages] = useState<{
     [key: string]: number;
   }>({
     scheduling: 0,
-    carSales: 0
+    carSales: 0,
+    dentist: 0,
+    realEstate: 0
   });
+
   useEffect(() => {
     const industryInterval = setInterval(() => {
       setCurrentIndustry(prev => (prev + 1) % industryTypes.length);
     }, 2000);
+
     return () => clearInterval(industryInterval);
   }, []);
+
   useEffect(() => {
     let timeoutIds: NodeJS.Timeout[] = [];
+
     const showNextMessage = (demo: string, index: number, baseDelay: number = 0) => {
       const conversation = conversations[demo as keyof typeof conversations];
       if (index < conversation.length) {
@@ -77,15 +121,19 @@ export const AnimatedDemos = () => {
       }
     };
 
-    // Start first demo immediately
+    // Start all demos with staggered delays
     showNextMessage('scheduling', 0, 0);
-    // Start second demo with 2 second delay
     showNextMessage('carSales', 0, 2000);
+    showNextMessage('dentist', 0, 4000);
+    showNextMessage('realEstate', 0, 6000);
+
     return () => timeoutIds.forEach(id => clearTimeout(id));
   }, []);
+
   const renderMessage = (message: any, index: number) => {
     let bgColor = "bg-gray-800 text-white border border-gray-700";
     let icon = null;
+
     if (message.type === 'customer') {
       bgColor = "bg-white text-black";
     } else if (message.type === 'ai') {
@@ -96,26 +144,47 @@ export const AnimatedDemos = () => {
     } else if (message.type === 'car') {
       bgColor = "bg-orange-900 text-orange-200 border border-orange-700";
       icon = <Car className="w-3 h-3" />;
+    } else if (message.type === 'appointment') {
+      bgColor = "bg-green-900 text-green-200 border border-green-700";
+      icon = <Clock className="w-3 h-3" />;
+    } else if (message.type === 'patient') {
+      bgColor = "bg-purple-900 text-purple-200 border border-purple-700";
+      icon = <Users className="w-3 h-3" />;
+    } else if (message.type === 'system') {
+      bgColor = "bg-gray-700 text-gray-200 border border-gray-600";
+    } else if (message.type === 'property') {
+      bgColor = "bg-indigo-900 text-indigo-200 border border-indigo-700";
+      icon = <FileText className="w-3 h-3" />;
+    } else if (message.type === 'data' || message.type === 'details') {
+      bgColor = "bg-teal-900 text-teal-200 border border-teal-700";
+    } else if (message.type === 'status') {
+      bgColor = "bg-emerald-900 text-emerald-200 border border-emerald-700";
     }
-    return <div key={index} className={`flex ${message.type === 'customer' ? 'justify-end' : 'justify-start'} animate-fade-in`}>
+
+    return (
+      <div key={index} className={`flex ${message.type === 'customer' ? 'justify-end' : 'justify-start'} animate-fade-in`}>
         <div className={`max-w-xs px-4 py-3 rounded-2xl ${bgColor}`}>
           <div className="flex items-center gap-2 mb-1">
             {icon}
             <div className="w-2 h-2 rounded-full bg-gray-400" />
             <span className="text-xs opacity-75">
-              {message.type === 'customer' ? 'Customer' : message.type === 'ai' ? 'CirkadianAI' : 'System'}
+              {message.type === 'customer' ? 'Customer' : 
+               message.type === 'ai' ? 'CirkadianAI' : 
+               'System'}
             </span>
           </div>
           <p className="text-sm whitespace-pre-line">{message.text}</p>
         </div>
-      </div>;
+      </div>
+    );
   };
-  const demos = ['scheduling', 'carSales'];
-  return <section id="automation-demo" className="px-6 bg-black py-[80px]">
+
+  const demos = ['scheduling', 'carSales', 'dentist', 'realEstate'];
+
+  return (
+    <section id="automation-demo" className="px-6 bg-black py-[80px]">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          
-          
           <p className="text-gray-400 mb-8 text-5xl font-bold">
             Specialized Solutions for{" "}
             <span className="font-semibold text-white transition-all duration-500 inline-block" key={currentIndustry}>
@@ -129,12 +198,17 @@ export const AnimatedDemos = () => {
         </div>
         
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          {demos.map((demo, idx) => <Card key={demo} className="bg-gray-900 border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 py-[80px] my-0 mx-[3px]">
-              <div className="space-y-4 h-100 overflow-hidden">
-                {conversations[demo as keyof typeof conversations].slice(0, visibleMessages[demo]).map((message, index) => renderMessage(message, index))}
+          {demos.map((demo, idx) => (
+            <Card key={demo} className="bg-gray-900 border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 h-96">
+              <div className="space-y-4 h-full overflow-hidden">
+                {conversations[demo as keyof typeof conversations]
+                  .slice(0, visibleMessages[demo])
+                  .map((message, index) => renderMessage(message, index))}
               </div>
-            </Card>)}
+            </Card>
+          ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
