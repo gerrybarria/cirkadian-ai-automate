@@ -39,21 +39,35 @@ const conversations = {
     delay: 2500
   }],
   dentist: [{
-    type: 'calendar',
-    text: "📅 December 15, 2024",
-    delay: 1000
+    type: 'date',
+    text: "December 15, 2024",
+    delay: 1000,
+    position: { row: 0, col: 0 }
   }, {
     type: 'appointment',
-    text: "🦷 Dr. Smith - Dental Cleaning\n⏰ 2:00 PM - 3:00 PM",
-    delay: 1500
+    text: "Dr. Smith - Dental Cleaning\n2:00 PM - 3:00 PM",
+    delay: 1500,
+    position: { row: 1, col: 0 }
   }, {
-    type: 'patient',
-    text: "👤 Patient: Sarah Johnson\n📝 Regular checkup + teeth whitening consultation",
-    delay: 2000
+    type: 'date',
+    text: "December 16, 2024",
+    delay: 2000,
+    position: { row: 0, col: 1 }
   }, {
-    type: 'system',
-    text: "✅ Appointment scheduled\n📱 Reminder sent to patient",
-    delay: 2500
+    type: 'appointment',
+    text: "Dr. Johnson - Teeth Whitening\n10:00 AM - 11:00 AM",
+    delay: 2500,
+    position: { row: 1, col: 1 }
+  }, {
+    type: 'date',
+    text: "December 17, 2024",
+    delay: 3000,
+    position: { row: 0, col: 2 }
+  }, {
+    type: 'appointment',
+    text: "Dr. Smith - Root Canal\n3:00 PM - 4:30 PM",
+    delay: 3500,
+    position: { row: 1, col: 2 }
   }],
   realEstate: [{
     type: 'property',
@@ -159,6 +173,9 @@ export const AnimatedDemos = () => {
       bgColor = "bg-teal-900 text-teal-200 border border-teal-700";
     } else if (message.type === 'status') {
       bgColor = "bg-emerald-900 text-emerald-200 border border-emerald-700";
+    } else if (message.type === 'date') {
+      bgColor = "bg-blue-900 text-blue-200 border border-blue-700";
+      icon = <Calendar className="w-3 h-3" />;
     }
 
     return (
@@ -170,11 +187,58 @@ export const AnimatedDemos = () => {
             <span className="text-xs opacity-75">
               {message.type === 'customer' ? 'Customer' : 
                message.type === 'ai' ? 'CirkadianAI' : 
+               message.type === 'date' ? 'Calendar' :
                'System'}
             </span>
           </div>
           <p className="text-sm whitespace-pre-line">{message.text}</p>
         </div>
+      </div>
+    );
+  };
+
+  const renderCalendarGrid = () => {
+    const dentistMessages = conversations.dentist.slice(0, visibleMessages.dentist);
+    
+    return (
+      <div className="grid grid-cols-3 gap-4 h-full">
+        {[0, 1, 2].map(col => (
+          <div key={col} className="space-y-4">
+            {[0, 1].map(row => {
+              const message = dentistMessages.find(msg => 
+                msg.position && msg.position.col === col && msg.position.row === row
+              );
+              
+              if (!message) return <div key={row} className="h-20" />;
+              
+              let bgColor = "bg-gray-800 text-white border border-gray-700";
+              let icon = null;
+              
+              if (message.type === 'date') {
+                bgColor = "bg-blue-900 text-blue-200 border border-blue-700";
+                icon = <Calendar className="w-3 h-3" />;
+              } else if (message.type === 'appointment') {
+                bgColor = "bg-green-900 text-green-200 border border-green-700";
+                icon = <Clock className="w-3 h-3" />;
+              }
+              
+              return (
+                <div key={row} className="animate-fade-in">
+                  <div className={`px-4 py-3 rounded-2xl ${bgColor} h-20 flex flex-col justify-center`}>
+                    <div className="flex items-center gap-2 mb-1">
+                      {icon}
+                      <div className="w-2 h-2 rounded-full bg-gray-400" />
+                      <span className="text-xs opacity-75">
+                        {message.type === 'date' ? 'Calendar' : 'Appointment'}
+                      </span>
+                    </div>
+                    <p className="text-sm whitespace-pre-line">{message.text}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     );
   };
@@ -201,9 +265,13 @@ export const AnimatedDemos = () => {
           {demos.map((demo, idx) => (
             <Card key={demo} className="bg-gray-900 border-gray-800 p-8 hover:border-gray-600 transition-all duration-300 h-96">
               <div className="space-y-4 h-full overflow-hidden">
-                {conversations[demo as keyof typeof conversations]
-                  .slice(0, visibleMessages[demo])
-                  .map((message, index) => renderMessage(message, index))}
+                {demo === 'dentist' ? (
+                  renderCalendarGrid()
+                ) : (
+                  conversations[demo as keyof typeof conversations]
+                    .slice(0, visibleMessages[demo])
+                    .map((message, index) => renderMessage(message, index))
+                )}
               </div>
             </Card>
           ))}
