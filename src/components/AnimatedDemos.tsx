@@ -7,23 +7,23 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 const conversations = {
   scheduling: [{
     type: 'customer',
-    text: "I need to schedule a consultation",
+    text: "I need legal consultation",
     delay: 500
   }, {
     type: 'ai',
-    text: "I'd be happy to help! What type of consultation are you looking for?",
+    text: "I'd be happy to help! What type of legal matter?",
     delay: 800
   }, {
     type: 'customer',
-    text: "A business strategy session",
+    text: "Contract review",
     delay: 1200
   }, {
     type: 'ai',
-    text: "Perfect! I have availability this Thursday at 2PM or Friday at 10AM. Which works better?",
+    text: "Perfect! I have availability Thursday at 2PM. Does that work?",
     delay: 1600
   }, {
     type: 'customer',
-    text: "Thursday 2PM sounds great",
+    text: "Yes, that works",
     delay: 2000
   }, {
     type: 'calendar',
@@ -31,7 +31,7 @@ const conversations = {
     delay: 2400
   }, {
     type: 'ai',
-    text: "✅ Appointment confirmed for Thursday 2PM. Calendar invite sent!",
+    text: "✅ Appointment confirmed for Thursday 2PM!",
     delay: 2800
   }],
   carSales: [{
@@ -238,23 +238,23 @@ export const AnimatedDemos = () => {
     const dentistMessages = conversations.dentist.slice(0, visibleMessages.dentist);
     
     return (
-      <div className="grid grid-cols-3 gap-4 h-full">
+      <div className="grid grid-cols-3 gap-3 h-full">
         {[0, 1, 2].map(col => (
-          <div key={col} className="space-y-4">
+          <div key={col} className="space-y-3">
             {[0, 1, 2].map(row => {
               if (row === 0) {
                 // Always show dates (fixed)
                 const dateInfo = dentistDates[col];
                 return (
                   <div key={row}>
-                    <div className="px-3 py-3 rounded-2xl bg-blue-900 text-blue-200 border border-blue-700 h-16 flex flex-col">
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className="px-3 py-2 rounded-2xl bg-blue-900 text-blue-200 border border-blue-700 h-14 flex flex-col">
+                      <div className="flex items-center gap-2 mb-1">
                         <Calendar className="w-3 h-3" />
                         <div className="w-2 h-2 rounded-full bg-gray-400" />
                         <span className="text-xs opacity-75">Calendar</span>
                       </div>
-                      <div className="flex-1 flex items-center">
-                        <p className="text-sm whitespace-pre-line leading-tight">{dateInfo.text}</p>
+                      <div className="flex-1 flex items-center justify-center">
+                        <p className="text-sm text-center leading-tight">{dateInfo.text}</p>
                       </div>
                     </div>
                   </div>
@@ -265,7 +265,7 @@ export const AnimatedDemos = () => {
                   msg.position && msg.position.col === col && msg.position.row === row
                 );
                 
-                if (!appointment) return <div key={row} className="h-24" />;
+                if (!appointment) return <div key={row} className="h-20" />;
                 
                 let bgColor = "bg-gray-800 text-white border border-gray-700";
                 
@@ -286,14 +286,14 @@ export const AnimatedDemos = () => {
                 
                 return (
                   <div key={row} className="animate-fade-in">
-                    <div className={`px-3 py-4 rounded-2xl ${bgColor} h-24 flex flex-col`}>
-                      <div className="flex items-center gap-2 mb-2">
+                    <div className={`px-3 py-2 rounded-2xl ${bgColor} h-20 flex flex-col`}>
+                      <div className="flex items-center gap-2 mb-1">
                         <Clock className="w-3 h-3" />
                         <div className="w-2 h-2 rounded-full bg-gray-400" />
                         <span className="text-xs opacity-75">Appointment</span>
                       </div>
-                      <div className="flex-1 flex items-center">
-                        <p className="text-sm whitespace-pre-line leading-tight">{appointment.text}</p>
+                      <div className="flex-1 flex items-center justify-center">
+                        <p className="text-sm text-center whitespace-pre-line leading-tight">{appointment.text}</p>
                       </div>
                     </div>
                   </div>
@@ -383,7 +383,7 @@ export const AnimatedDemos = () => {
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
           {demos.map((demo, idx) => (
             <Card key={demo} className={`bg-gray-900 border-gray-800 p-6 hover:border-gray-600 transition-all duration-300 ${
-              demo === 'scheduling' || demo === 'carSales' ? 'h-[500px]' : 'h-96'
+              demo === 'scheduling' || demo === 'carSales' ? 'h-[600px]' : 'h-96'
             }`}>
               <div className="space-y-4 h-full overflow-hidden">
                 {demo === 'dentist' ? (
