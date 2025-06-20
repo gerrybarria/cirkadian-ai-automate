@@ -7,16 +7,12 @@ import { AnimatedDemos } from "@/components/AnimatedDemos";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FeatureHighlights } from "@/components/FeatureHighlights";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { ChatWidget } from "@/components/ChatWidget";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      {/* Subtle background pattern */}
-      <div className="fixed inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(0,112,243,0.03),transparent_70%)]" />
-      
       {/* Content */}
       <div className="relative z-10">
         <Navigation />
@@ -26,7 +22,6 @@ const Index = () => {
         <FeatureHighlights />
         <TestimonialsSection />
         <Footer />
-        <ChatWidget />
       </div>
     </div>
   );

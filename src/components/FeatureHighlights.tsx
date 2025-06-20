@@ -1,31 +1,36 @@
 
-import { Card, CardContent } from "@/components/ui/card";
 import { Calendar, MessageCircle, Clock, TrendingUp } from "lucide-react";
 
 const features = [
   {
     icon: Calendar,
     title: "Automated Appointment Scheduling",
-    description: "Seamless integration with calendars and minimal wait times",
-    stat: "Reduce booking times from hours to seconds, increasing client retention by 40%"
+    description: "Seamless integration with calendars and minimal wait times. Reduce booking times from hours to seconds, increasing client retention by 40%"
   },
   {
     icon: MessageCircle,
-    title: "Intelligent Customer Support",
-    description: "Real-time responses and 24/7 availability for your customers",
-    stat: "Instant responses lead to 30% fewer lost sales opportunities"
+    title: "Intelligent Customer Support", 
+    description: "Real-time responses and 24/7 availability for your customers. Instant responses lead to 30% fewer lost sales opportunities"
   },
   {
     icon: Clock,
     title: "24/7 Availability",
-    description: "Never miss a customer inquiry, even outside business hours",
-    stat: "Capture 60% more leads with round-the-clock automation"
+    description: "Never miss a customer inquiry, even outside business hours. Capture 60% more leads with round-the-clock automation"
   },
   {
     icon: TrendingUp,
     title: "Increased Conversions",
-    description: "Convert more prospects into paying customers automatically",
-    stat: "Average 45% increase in booking conversion rates"
+    description: "Convert more prospects into paying customers automatically. Average 45% increase in booking conversion rates"
+  },
+  {
+    icon: MessageCircle,
+    title: "Reliability and Trust",
+    description: "We believe that establishing a trusted partnership in business is the only way to success. It's the way that we've chosen."
+  },
+  {
+    icon: Calendar,
+    title: "Rapid Implementation",
+    description: "From agile to DevOps to continuous delivery, we use modern development approaches to work better, faster, and be more transparent."
   }
 ];
 
@@ -36,7 +41,7 @@ export const FeatureHighlights = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
             Powerful Features That{" "}
-            <span className="accent-primary">
+            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
               Drive Results
             </span>
           </h2>
@@ -45,23 +50,23 @@ export const FeatureHighlights = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
           {features.map((feature, index) => (
-            <Card 
-              key={index} 
-              className="bg-gray-900 border-gray-800 hover:border-gray-600 transition-all duration-300 group hover-scale"
-            >
-              <CardContent className="p-6">
-                <div className="w-12 h-12 rounded-lg bg-white flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                  <feature.icon className="h-6 w-6 text-black" />
+            <div key={index} className="flex gap-4 group">
+              <div className="flex-shrink-0">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                  <feature.icon className="h-4 w-4 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold mb-3 text-white">{feature.title}</h3>
-                <p className="text-gray-400 mb-4 leading-relaxed">{feature.description}</p>
-                <div className="bg-gray-800 rounded-lg p-3 border border-gray-700">
-                  <p className="text-sm text-gray-300 font-medium leading-relaxed">{feature.stat}</p>
-                </div>
-              </CardContent>
-            </Card>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-purple-400 transition-colors">
+                  {feature.title}
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed">
+                  {feature.description}
+                </p>
+              </div>
+            </div>
           ))}
         </div>
       </div>
