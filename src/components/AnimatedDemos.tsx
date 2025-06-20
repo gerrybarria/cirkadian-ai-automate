@@ -1,4 +1,3 @@
-
 import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { Calendar, Car, Users, FileText, Clock } from "lucide-react";
@@ -53,37 +52,37 @@ const conversations = {
   }],
   dentist: [{
     type: 'appointment',
-    text: "Dr. Smith - Dental Cleaning\n2:00 PM - 3:00 PM",
+    text: "Dr. Smith\nCleaning\n2:00 PM",
     delay: 800,
     position: { row: 1, col: 0 },
     color: 'green'
   }, {
     type: 'appointment',
-    text: "Dr. Johnson - Teeth Whitening\n10:00 AM - 11:00 AM",
+    text: "Dr. Johnson\nWhitening\n10:00 AM",
     delay: 1200,
     position: { row: 1, col: 1 },
     color: 'purple'
   }, {
     type: 'appointment',
-    text: "Dr. Smith - Root Canal\n3:00 PM - 4:30 PM",
+    text: "Dr. Smith\nRoot Canal\n3:00 PM",
     delay: 1600,
     position: { row: 1, col: 2 },
     color: 'orange'
   }, {
     type: 'appointment',
-    text: "Dr. Martinez - Checkup\n9:00 AM - 10:00 AM",
+    text: "Dr. Martinez\nCheckup\n9:00 AM",
     delay: 2000,
     position: { row: 2, col: 0 },
     color: 'blue'
   }, {
     type: 'appointment',
-    text: "Dr. Lee - Braces Adjustment\n1:00 PM - 2:00 PM",
+    text: "Dr. Lee\nBraces\n1:00 PM",
     delay: 2400,
     position: { row: 2, col: 1 },
     color: 'red'
   }, {
     type: 'appointment',
-    text: "Dr. Wilson - Filling\n4:00 PM - 5:00 PM",
+    text: "Dr. Wilson\nFilling\n4:00 PM",
     delay: 2800,
     position: { row: 2, col: 2 },
     color: 'teal'
@@ -108,9 +107,9 @@ const conversations = {
 
 // Fixed dates for the dentist calendar
 const dentistDates = [
-  { text: "December 15, 2024", col: 0 },
-  { text: "December 16, 2024", col: 1 },
-  { text: "December 17, 2024", col: 2 }
+  { text: "Dec 15, 2024", col: 0 },
+  { text: "Dec 16, 2024", col: 1 },
+  { text: "Dec 17, 2024", col: 2 }
 ];
 
 // Fixed real estate client data
@@ -286,14 +285,14 @@ export const AnimatedDemos = () => {
                 
                 return (
                   <div key={row} className="animate-fade-in">
-                    <div className={`px-3 py-2 rounded-2xl ${bgColor} h-20 flex flex-col`}>
-                      <div className="flex items-center gap-2 mb-1">
-                        <Clock className="w-3 h-3" />
-                        <div className="w-2 h-2 rounded-full bg-gray-400" />
-                        <span className="text-xs opacity-75">Appointment</span>
+                    <div className={`px-2 py-2 rounded-2xl ${bgColor} h-20 flex flex-col overflow-hidden`}>
+                      <div className="flex items-center gap-1 mb-1">
+                        <Clock className="w-3 h-3 flex-shrink-0" />
+                        <div className="w-1 h-1 rounded-full bg-gray-400 flex-shrink-0" />
+                        <span className="text-xs opacity-75 truncate">Appointment</span>
                       </div>
-                      <div className="flex-1 flex items-center justify-center">
-                        <p className="text-sm text-center whitespace-pre-line leading-tight">{appointment.text}</p>
+                      <div className="flex-1 flex items-center justify-center overflow-hidden">
+                        <p className="text-xs text-center whitespace-pre-line leading-tight overflow-hidden">{appointment.text}</p>
                       </div>
                     </div>
                   </div>
