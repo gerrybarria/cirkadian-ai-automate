@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,6 +62,24 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
+				},
+				// New dark theme colors
+				dark: {
+					background: '#0a0a0b',
+					surface: '#131316',
+					'surface-light': '#1a1a1e',
+					border: '#2a2a2e',
+					text: '#ffffff',
+					'text-muted': '#a0a0a4',
+					'text-subtle': '#6b6b70'
+				},
+				brand: {
+					primary: '#3b82f6',
+					'primary-hover': '#2563eb',
+					secondary: '#8b5cf6',
+					'secondary-hover': '#7c3aed',
+					accent: '#06b6d4',
+					'accent-hover': '#0891b2'
 				}
 			},
 			borderRadius: {
@@ -84,11 +103,20 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				scroll: {
+					'0%': {
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						transform: 'translateX(-50%)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				scroll: 'scroll 30s linear infinite'
 			}
 		}
 	},
