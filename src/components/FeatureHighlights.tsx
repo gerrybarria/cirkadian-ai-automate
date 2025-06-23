@@ -41,11 +41,11 @@ export const FeatureHighlights = () => {
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
             Powerful Features That{" "}
-            <span className="bg-gradient-to-r from-blue-400 to-green-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">
               Drive Results
             </span>
           </h2>
-          <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Our AI-powered automation platform transforms how you handle customer interactions
           </p>
         </div>
@@ -54,15 +54,15 @@ export const FeatureHighlights = () => {
           {features.map((feature, index) => (
             <div key={index} className="flex gap-4 group">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 flex items-center justify-center">
+                <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-purple-600 flex items-center justify-center">
                   <feature.icon className="h-4 w-4 text-white" />
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-purple-400 transition-colors">
+                <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-blue-400 transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-gray-400 text-sm leading-relaxed">
+                <p className="text-gray-300 text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>

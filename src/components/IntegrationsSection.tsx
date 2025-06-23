@@ -22,10 +22,10 @@ export const IntegrationsSection = () => {
       <div className="max-w-7xl mx-auto text-center">
         <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
           We Adapt and Power{" "}
-          <span className="accent-primary">Your Workflow</span>
+          <span className="bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Your Workflow</span>
         </h2>
         
-        <p className="text-xl text-gray-400 mb-16 max-w-2xl mx-auto">
+        <p className="text-xl text-gray-300 mb-16 max-w-2xl mx-auto">
           We can integrate with your actual working method
         </p>
         
@@ -37,7 +37,7 @@ export const IntegrationsSection = () => {
                 key={`first-${index}`}
                 className="flex-shrink-0 flex flex-col items-center space-y-2 hover:scale-110 transition-transform"
               >
-                <integration.icon className="w-12 h-12 text-white" />
+                <integration.icon className="w-12 h-12 text-gray-300 hover:text-blue-400 transition-colors" />
                 <span className="text-xs text-gray-400 font-medium">{integration.name}</span>
               </div>
             ))}
@@ -47,7 +47,7 @@ export const IntegrationsSection = () => {
                 key={`second-${index}`}
                 className="flex-shrink-0 flex flex-col items-center space-y-2 hover:scale-110 transition-transform"
               >
-                <integration.icon className="w-12 h-12 text-white" />
+                <integration.icon className="w-12 h-12 text-gray-300 hover:text-blue-400 transition-colors" />
                 <span className="text-xs text-gray-400 font-medium">{integration.name}</span>
               </div>
             ))}
