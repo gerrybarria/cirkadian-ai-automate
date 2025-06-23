@@ -30,35 +30,35 @@ const testimonials = [{
 
 export const TestimonialsSection = () => {
   return (
-    <section id="testimonials" className="py-20 px-6 bg-dark-background">
+    <section id="testimonials" className="py-20 px-6 bg-black">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-dark-text">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
             What Our Clients{" "}
-            <span className="gradient-text-primary">
+            <span className="text-professional-accent">
               Are Saying
             </span>
           </h2>
-          <p className="text-xl text-dark-text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-professional-text-secondary max-w-3xl mx-auto">
             Real results from real businesses across different industries
           </p>
         </div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {testimonials.map((testimonial, index) => (
-            <Card key={index} className="card-dark hover-scale group">
+            <Card key={index} className="bg-professional-surface border-professional-border hover:border-professional-accent hover-scale group transition-all duration-300">
               <CardContent className="p-6">
                 <div className="flex items-center mb-4">
                   {[...Array(testimonial.rating)].map((_, i) => (
-                    <Star key={i} className="h-4 w-4 fill-yellow-400 text-yellow-400" />
+                    <Star key={i} className="h-4 w-4 fill-professional-accent text-professional-accent" />
                   ))}
                 </div>
-                <p className="text-dark-text-muted mb-6 italic">"{testimonial.content}"</p>
+                <p className="text-professional-text-muted mb-6 italic">"{testimonial.content}"</p>
                 <div className="flex items-center gap-3">
                   <div className="text-2xl">{testimonial.image}</div>
                   <div>
-                    <p className="font-semibold text-dark-text">{testimonial.name}</p>
-                    <p className="text-sm text-dark-text-subtle">{testimonial.company}</p>
+                    <p className="font-semibold text-white">{testimonial.name}</p>
+                    <p className="text-sm text-professional-text-muted">{testimonial.company}</p>
                   </div>
                 </div>
               </CardContent>

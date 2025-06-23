@@ -3,48 +3,48 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. */
+/* Professional Dark Theme Design System - Black, White, Green */
 
 @layer base {
   :root {
-    --background: 222 84% 4.9%;
-    --foreground: 210 40% 98%;
+    --background: 0 0% 4%;
+    --foreground: 0 0% 98%;
 
-    --card: 222 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 0 0% 10%;
+    --card-foreground: 0 0% 98%;
 
-    --popover: 222 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 0 0% 4%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 155 100% 50%;
+    --primary-foreground: 0 0% 0%;
 
-    --secondary: 262.1 83.3% 57.8%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary: 0 0% 16%;
+    --secondary-foreground: 0 0% 90%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 63%;
 
-    --accent: 188 95% 43%;
-    --accent-foreground: 210 40% 98%;
+    --accent: 155 100% 50%;
+    --accent-foreground: 0 0% 0%;
 
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 217.2 91.2% 59.8%;
+    --border: 0 0% 20%;
+    --input: 0 0% 16%;
+    --ring: 155 100% 50%;
 
     --radius: 0.5rem;
 
-    --sidebar-background: 222 84% 4.9%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 217.2 91.2% 59.8%;
-    --sidebar-primary-foreground: 222.2 47.4% 11.2%;
-    --sidebar-accent: 217.2 32.6% 17.5%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 217.2 32.6% 17.5%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --sidebar-background: 0 0% 4%;
+    --sidebar-foreground: 0 0% 98%;
+    --sidebar-primary: 155 100% 50%;
+    --sidebar-primary-foreground: 0 0% 0%;
+    --sidebar-accent: 0 0% 16%;
+    --sidebar-accent-foreground: 0 0% 98%;
+    --sidebar-border: 0 0% 20%;
+    --sidebar-ring: 155 100% 50%;
   }
 }
 
@@ -54,7 +54,7 @@
   }
 
   body {
-    @apply bg-dark-background text-dark-text;
+    @apply bg-black text-white;
     font-family: system-ui, -apple-system, sans-serif;
   }
 }
@@ -124,69 +124,88 @@
   transform: scale(1.02);
 }
 
-/* Enhanced gradient text */
+/* Enhanced green accent text */
 .gradient-text-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 50%, #06b6d4 100%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-size: 200% 100%;
-  animation: gradient-shift 3s ease-in-out infinite;
+  color: #00FF88;
+  text-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
 }
 
-@keyframes gradient-shift {
-  0%, 100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Button gradients */
+/* Professional button styles */
 .btn-gradient-primary {
-  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  background: #00FF88;
+  color: #000000;
+  border: 2px solid #00FF88;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
 .btn-gradient-primary:hover {
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  background: #39FF14;
+  border-color: #39FF14;
   transform: translateY(-1px);
-  box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 10px 25px rgba(0, 255, 136, 0.3);
 }
 
-.btn-gradient-secondary {
-  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+.btn-outline-primary {
+  background: transparent;
+  color: #00FF88;
+  border: 2px solid #00FF88;
   transition: all 0.3s ease;
+  font-weight: 600;
 }
 
-.btn-gradient-secondary:hover {
-  background: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
+.btn-outline-primary:hover {
+  background: #00FF88;
+  color: #000000;
   transform: translateY(-1px);
-  box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);
+  box-shadow: 0 8px 20px rgba(0, 255, 136, 0.2);
 }
 
 /* Card enhancements */
 .card-dark {
-  background: linear-gradient(135deg, #131316 0%, #1a1a1e 100%);
-  border: 1px solid #2a2a2e;
+  background: #1A1A1A;
+  border: 1px solid #333333;
   transition: all 0.3s ease;
 }
 
 .card-dark:hover {
-  border-color: #3b82f6;
-  box-shadow: 0 8px 32px rgba(59, 130, 246, 0.1);
+  border-color: #00FF88;
+  box-shadow: 0 8px 32px rgba(0, 255, 136, 0.1);
 }
 
-/* Surface variations */
-.surface-primary {
-  background-color: #0a0a0b;
+/* Professional color classes */
+.bg-professional-dark {
+  background-color: #000000;
 }
 
-.surface-secondary {
-  background-color: #131316;
+.bg-professional-surface {
+  background-color: #1A1A1A;
 }
 
-.surface-tertiary {
-  background-color: #1a1a1e;
+.bg-professional-card {
+  background-color: #2A2A2A;
+}
+
+.text-professional-primary {
+  color: #FFFFFF;
+}
+
+.text-professional-secondary {
+  color: #E5E5E5;
+}
+
+.text-professional-muted {
+  color: #A0A0A0;
+}
+
+.text-professional-accent {
+  color: #00FF88;
+}
+
+.border-professional {
+  border-color: #333333;
+}
+
+.border-professional-accent {
+  border-color: #00FF88;
 }

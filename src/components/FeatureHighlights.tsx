@@ -36,16 +36,16 @@ const features = [
 
 export const FeatureHighlights = () => {
   return (
-    <section className="py-20 px-6 bg-dark-background" id="features">
+    <section className="py-20 px-6 bg-black" id="features">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-dark-text">
+          <h2 className="text-3xl md:text-5xl font-bold mb-8 text-white">
             Powerful Features That{" "}
-            <span className="gradient-text-primary">
+            <span className="text-professional-accent">
               Drive Results
             </span>
           </h2>
-          <p className="text-xl text-dark-text-muted max-w-3xl mx-auto">
+          <p className="text-xl text-professional-text-secondary max-w-3xl mx-auto">
             Our AI-powered automation platform transforms how you handle customer interactions
           </p>
         </div>
@@ -54,15 +54,15 @@ export const FeatureHighlights = () => {
           {features.map((feature, index) => (
             <div key={index} className="flex gap-4 group">
               <div className="flex-shrink-0">
-                <div className="w-8 h-8 rounded-lg btn-gradient-primary flex items-center justify-center shadow-lg">
-                  <feature.icon className="h-4 w-4 text-white" />
+                <div className="w-8 h-8 rounded-lg bg-professional-accent flex items-center justify-center shadow-lg">
+                  <feature.icon className="h-4 w-4 text-black" />
                 </div>
               </div>
               <div className="flex-1">
-                <h3 className="text-lg font-semibold mb-2 text-dark-text group-hover:text-brand-primary transition-colors">
+                <h3 className="text-lg font-semibold mb-2 text-white group-hover:text-professional-accent transition-colors">
                   {feature.title}
                 </h3>
-                <p className="text-dark-text-muted text-sm leading-relaxed">
+                <p className="text-professional-text-muted text-sm leading-relaxed">
                   {feature.description}
                 </p>
               </div>

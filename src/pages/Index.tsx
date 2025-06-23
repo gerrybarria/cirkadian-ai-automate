@@ -13,7 +13,7 @@ import { Footer } from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-dark-background text-dark-text overflow-x-hidden">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden">
       {/* Content */}
       <div className="relative z-10">
         <Navigation />

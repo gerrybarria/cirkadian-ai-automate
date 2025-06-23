@@ -63,23 +63,18 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				// New dark theme colors
-				dark: {
-					background: '#0a0a0b',
-					surface: '#131316',
-					'surface-light': '#1a1a1e',
-					border: '#2a2a2e',
-					text: '#ffffff',
-					'text-muted': '#a0a0a4',
-					'text-subtle': '#6b6b70'
-				},
-				brand: {
-					primary: '#3b82f6',
-					'primary-hover': '#2563eb',
-					secondary: '#8b5cf6',
-					'secondary-hover': '#7c3aed',
-					accent: '#06b6d4',
-					'accent-hover': '#0891b2'
+				// Professional dark theme colors
+				professional: {
+					dark: '#000000',
+					surface: '#1A1A1A',
+					card: '#2A2A2A',
+					text: '#FFFFFF',
+					'text-secondary': '#E5E5E5',
+					'text-muted': '#A0A0A0',
+					accent: '#00FF88',
+					'accent-hover': '#39FF14',
+					success: '#228B22',
+					border: '#333333'
 				}
 			},
 			borderRadius: {
