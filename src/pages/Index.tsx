@@ -7,7 +7,6 @@ import { AnimatedDemos } from "@/components/AnimatedDemos";
 import { IntegrationsSection } from "@/components/IntegrationsSection";
 import { FeatureHighlights } from "@/components/FeatureHighlights";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { IndustrySection } from "@/components/IndustrySection";
 import { Navigation } from "@/components/Navigation";
 import { Footer } from "@/components/Footer";
 
@@ -21,7 +20,6 @@ const Index = () => {
         <AnimatedDemos />
         <IntegrationsSection />
         <FeatureHighlights />
-        <IndustrySection />
         <TestimonialsSection />
         <Footer />
       </div>
