@@ -1,0 +1,32 @@
+# docker-compose.yml  (colócalo en la raíz del proyecto)
+version: "3.9"
+
+services:
+  cirkadianai:
+    # Construye la imagen a partir del Dockerfile que hay en la carpeta raíz
+    build:
+      context: .
+    # Si prefieres, comenta la línea build: y usa una imagen ya construida
+    image: cirkadianai:latest        # nombre de la imagen resultante
+    container_name: cirkadianai
+    restart: unless-stopped          # reinicia si el VPS se reinicia
+
+    # ----- Etiquetas para Traefik -----
+    labels:
+      - "traefik.enable=true"
+      # Dominios que apuntarán a este contenedor
+      - "traefik.http.routers.cirkadianai.rule=Host(`cirkadianai.com`,`www.cirkadianai.com`)"
+      # Punto de entrada HTTPS que definiste en traefik.yml / traefik.toml
+      - "traefik.http.routers.cirkadianai.entrypoints=websecure"
+      # Resolver ACME/Let's Encrypt (debe existir en tu config de Traefik)
+      - "traefik.http.routers.cirkadianai.tls.certresolver=letsencrypt"
+      # Puerto interno que Nginx expone dentro del contenedor
+      - "traefik.http.services.cirkadianai.loadbalancer.server.port=80"
+
+    networks:
+      - traefik
+
+# ----- Redes -----
+networks:
+  traefik:
+    external: true      # Use la red bridge ‘traefik’ que ya tienes creada
